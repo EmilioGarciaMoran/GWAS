@@ -2,7 +2,7 @@
 Code and data to perform GWAS on Affymetrix Axiom Genotype chip
 ## Preprocessing
 The aim of this part of code is to process raw intensity files, as direct output from the genotyping machine, into files to be used as input for general open source genetic association software as PLINK. 
-```
+```bash
 apt-geno-qc \
 --analysis-files-path Axiom_SpainAnalysis \
 --xml-file Axiom_SpainAnalysis/Axiom_SpainBA.r2.apt-geno-qc.AxiomQC1.xml \
