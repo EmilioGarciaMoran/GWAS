@@ -11,12 +11,13 @@ apt-geno-qc \
 --qcc-file Axiom_SpainBA.r2.qcc \
 --chrX-probes Axiom_SpainAnalysis/Axiom_SpainBA.r2.chrXprobes \
 --chrY-probes Axiom_SpainAnalysis/Axiom_SpainBA.r2.chrYprobes \
---cel-files listacelAlvarez1.txt \
+--cel-files listacelAll.txt \
 --out-dir data \
---out-file aptGenoQcAlvarez1.txt \
---log-file aptGenoQcAlvarez1.log
-#Segun el manual de Affymetrix el control de calidad requiere que el campo 'axiom-dishqc-DQC' tenga valor superior a 0.82 para cada muestra. Es columna R en Excel, orden16
-
-#awk -F '\t' '$2<0.86 && $8<0.4' aptGenoQcAlvarez1.txt >aptGenoQcAlvarez1_Filtered.txt  OLD VERSION
-awk -F '\t' '$16<0.82' aptGenoQcAlvarez2.txt >aptGenoQcAlvarez2_Filtered.txt
+--out-file aptGenoQcAll.txt \
+--log-file aptGenoQcAll.log
+#Segun el manual de Affymetrix el control de calidad requiere que el campo 'axiom-dishqc-DQC' tenga valor superior a 0.82 para cada muestra. Es columna decimooctava (18). Comprobación en la línea siguiente
+cut -f18 aptGenoQcAll.txt|head
+#Filtrado a un fichero de los valores 
+awk -F '\t' '$18<0.82' aptGenoQcAll.txt >aptGenoQcAll_Filter0.82.txt
+cat aptGenoQcAll_Filter0.82.txt
 ```
